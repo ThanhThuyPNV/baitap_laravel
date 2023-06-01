@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 Route::get('/home', [App\Http\Controllers\PageController::class, 'getIndex']);
 //  Route::get('/ac', [App\Http\Controllers\PageController::class, 'loai_sanpham']);
-
+Route::get('/detail/{id}', [App\Http\Controllers\PageController::class, 'getDetail']);
 use Illuminate\Support\Facades\Schema;
 Route::get('database',function(){
     Schema::create('loaisanpham',function($table){
@@ -27,3 +27,7 @@ Route::get('database',function(){
     });
     echo"Đã thực hiện lệnh tạo bảng thành công";
 });
+Route::get('/contact', [App\Http\Controllers\PageController::class, 'getContact']);
+Route::get('/about', [App\Http\Controllers\PageController::class, 'getAbout']);
+Route::get('/type/{id}', [App\Http\Controllers\PageController::class, 'getLoaiSp']);
+

@@ -20,7 +20,7 @@
 <style>
 		.images_item {
 			width: 250px;
-			height: 150px;
+			height: 170px;
 		}
 	</style>
 	@include("header")
