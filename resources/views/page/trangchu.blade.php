@@ -72,15 +72,14 @@
 			<div class="banner">
 				<ul>
 					<!-- THE FIRST SLIDE -->
-					@foreach ($slide as $ss1)
-					<li data-transition="boxfade" data-slotamount="20" class="active-revslide" style="width: 100%; height: 100%; overflow: hidden; z-index: 18; visibility: hidden; opacity: 0;">
-						<div class="slotholder" style="width:100%;height:100%;" data-duration="undefined" data-zoomstart="undefined" data-zoomend="undefined" data-rotationstart="undefined" data-rotationend="undefined" data-ease="undefined" data-bgpositionend="undefined" data-bgposition="undefined" data-kenburns="undefined" data-easeme="undefined" data-bgfit="undefined" data-bgfitend="undefined" data-owidth="undefined" data-oheight="undefined">
-							<div class="tp-bgimg defaultimg" data-lazyload="undefined" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" data-lazydone="undefined" src="source/image/slide/{{$ss1-> image}}" data-src="source/image/slide/{{$ss1-> image}}" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('source/image/slide/{{$ss1-> image}}'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
-							</div>
-						</div>
-
-					</li>
-					@endforeach
+					@foreach($slide as $ss1)
+                        <li data-transition="boxfade" data-slotamount="20" class="active-revslide" style="width: 100%; height: 100%; overflow: hidden;
+                        z-index: 18; visibility: hidden; opacity: 0;">
+                        <div class="slotholder" style="width: 100%; height: 100%;" data-duration="undifined" data-zoomstart="undifined" data-zoomend="undifined"
+                        data-bgposition="undifined" data-kenburns="undifined" data-easeme="undifined" data-bgfit="undifined" data-bgfitend="undifined" ></div>
+                        </li>   
+                            <img style="width: 100%; height: 100%;" src="/source/image/slide/{{$ss1->image}}" alt="It'ok">
+                        @endforeach
 				</ul>
 			</div>
 		</div>
