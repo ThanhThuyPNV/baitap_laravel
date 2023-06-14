@@ -8,13 +8,15 @@ use App\Models\product;
 use App\Models\comment;
 use App\Models\Type_product;
 use App\Models\bill_detail;
+use App\Models\Card;
+use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller
 {
 
     public function getIndex()
     {
-        $slide = Slide::all();
+        $slide = slide::all();
         //return view('page.trangchu',['slide'=>$slide]);						
         $new_product = product::where('new', 1)->get();
         $new_product_array = $new_product->toArray();
@@ -111,5 +113,15 @@ class PageController extends Controller
       $product->delete();
       return redirect('/admin');
     }
+
+    					
+public function getAddToCart(Request $req, $id){					
+    $product = product::find($id);					
+    $oldCart = Session('cart')?Session::get('cart'):null;					
+    $cart = new Card($oldCart);					
+    $cart->add($product,$id);					
+    $req->session()->put('cart', $cart);					
+    return redirect()->back();					
+}					
 
 }
