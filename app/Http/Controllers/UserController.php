@@ -27,7 +27,7 @@ class UserController extends Controller
     public function Logout(){
         Session::forget('user');
         Session::forget('cart');
-        return redirect('/trangchu');
+        return redirect('/home');
     }
 
     public function Register(Request $request)

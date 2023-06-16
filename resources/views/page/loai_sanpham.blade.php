@@ -32,7 +32,7 @@
 						<br>
 						@foreach($type_product as $loai)
 						@if(isset($sp_theoloai[0]) && $sp_theoloai[0]->id_type == $loai->id)
-    						<h4 style="text-align:center; font-weight: bold;"> {{$loai->name}}</h4>
+						<h4 style="text-align:center; font-weight: bold;"> {{$loai->name}}</h4>
 						@endif
 
 						@endforeach
@@ -105,9 +105,12 @@
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
-										<div class="clearfix"></div>
+										<div class="single-item-caption">
+											<a class="add-to-cart pull-left" href="{{route('themgiohang',$new->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
+										</div>
+										
 									</div>
 								</div>
 							</div>

@@ -43,19 +43,19 @@
 
 							@foreach($product_cart as $product)
 							<div class="cart-item" id="cart-item{{$product['item']['id']}}">
-								<a class="cart-item-delete" value="{{$product['item']['id']}}" soluong="{{$product['qty']}}"><i class="fa fa-times"></i></a>
+								<a class="cart-item-delete" href="{{route('xoagiohang',$product['item']['id'])}}" value="{{$product['item']['id']}}" soluong="{{$product['qty']}}"><i class="fa fa-times"></i></a>
 								<div class="media">
 									<a class="pull-left" href="#"><img src="source/image/product/{{$product['item']['image']}}" alt=""></a>
 									<div class="media-body">
 										<span class="cart-item-title">{{$product['item']['name']}}</span>
-										<span class="cart-item-amount">{{$product['item']['qty']}}*<span>{{$product['item']['unit_price']}}</span></span>
+										<span class="cart-item-amount">{{$product['qty']}}*<span id="dongia{{$product['item']['id']}}" value="@if($product['item']['promotion_price']==0){{($product['item']['unit_price'])}}@else {{($product['item']['promotion_price'])}}@endif">@if($product['item']['promotion_price']==0){{number_format($product['item']['unit_price'])}}@else {{number_format($product['item']['promotion_price'])}}@endif</span></span>
 									</div>
 								</div>
 							</div>
 							@endforeach
 
 							<div class="cart-caption">
-								<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{number_format(Session('cart')->totalPrice)}} đồng</span></div>
+								<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value" value="@if(Session::has('cart')){{($totalPrice)}}@else 0 @endif">@if(Session::has('cart')){{number_format($totalPrice)}}@else 0 @endif đồng</span></div>
 								<div class="clearfix"></div>
 
 								<div class="center">
@@ -67,37 +67,39 @@
 					</div> <!-- .cart -->
 					@endif
 				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div> <!-- .container -->
-	</div> <!-- .header-body -->
-	<div class="header-bottom" style="background-color: #0277b8;">
-		<div class="container">
-			<a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
-			<div class="visible-xs clearfix"></div>
-			<nav class="main-menu">
-				<ul class="l-inline ov">
-					<li><a href="/luan">Trang chủ</a></li>
-					<li><a href="#">Sản phẩm</a>
-						<ul class="sub-menu">
-							<li><a href="product_type.html">Sản phẩm 1</a></li>
-							<li><a href="product_type.html">Sản phẩm 2</a></li>
-							<li><a href="product_type.html">Sản phẩm 4</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Loai Sản phẩm</a>
-						<ul class="sub-menu">
-							@foreach($loai_sp as $loai)
-							<li><a href="/type/{{ $loai->id }}">{{ $loai->name }}</a></li>
-							@endforeach
-						</ul>
-					</li>
 
-					<li><a href="about.html">Giới thiệu</a></li>
-					<li><a href="contacts.html">Liên hệ</a></li>
-				</ul>
-				<div class="clearfix"></div>
-			</nav>
-		</div> <!-- .container -->
-	</div> <!-- .header-bottom -->
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div> <!-- .container -->
+</div> <!-- .header-body -->
+<div class="header-bottom" style="background-color: #0277b8;">
+	<div class="container">
+		<a class="visible-xs beta-menu-toggle pull-right" href="#"><span class='beta-menu-toggle-text'>Menu</span> <i class="fa fa-bars"></i></a>
+		<div class="visible-xs clearfix"></div>
+		<nav class="main-menu">
+			<ul class="l-inline ov">
+				<li><a href="/home">Trang chủ</a></li>
+				<li><a href="#">Sản phẩm</a>
+					<ul class="sub-menu">
+						<li><a href="product_type.html">Sản phẩm 1</a></li>
+						<li><a href="product_type.html">Sản phẩm 2</a></li>
+						<li><a href="product_type.html">Sản phẩm 4</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Loai Sản phẩm</a>
+					<ul class="sub-menu">
+						@foreach($loai_sp as $loai)
+						<li><a href="/type/{{ $loai->id }}">{{ $loai->name }}</a></li>
+						@endforeach
+					</ul>
+				</li>
+
+				<li><a href="about.html">Giới thiệu</a></li>
+				<li><a href="contacts.html">Liên hệ</a></li>
+			</ul>
+			<div class="clearfix"></div>
+		</nav>
+	</div> <!-- .container -->
+</div> <!-- .header-bottom -->
 </div> <!-- #header -->
