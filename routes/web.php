@@ -64,6 +64,8 @@ Route::get('del-cart/{id}', [App\Http\Controllers\PageController::class, 'getDel
 Route::get('check-out', [App\Http\Controllers\PageController::class, 'getCheckout'])->name('dathang');				
 Route::post('check-out', [App\Http\Controllers\PageController::class, 'postCheckout'])->name('dathang');				
 
+// Route::post('/add-rating', [App\Http\Controllers\RatingController::class, 'addRating']);
 
 
-
+Route::post('/add-rating', [App\Http\Controllers\RatingController::class,'store'])->name('add-rating');
+Route::get('/products/{id}', [App\Http\Controllers\PageController::class, 'getDetail'])->name('products.show');

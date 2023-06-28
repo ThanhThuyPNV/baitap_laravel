@@ -30,11 +30,32 @@ class PageController extends Controller
 
     public function getDetail(Request $request)
     {
-        $sanpham = product::where('id', $request->id)->first();
-        $splienquan = product::where('id', '<>', $sanpham->id, 'and', 'id_type', '=', $sanpham->id_type)->paginate(3);
-        $comments =    comment::where('id_product', $request->id)->get();
-        return view('page.chitiet_sanpham', compact('sanpham', 'splienquan', 'comments'));
+        $sanpham = Product::where('id', $request->id)->first();
+        
+        // Lấy các sản phẩm liên quan
+        $splienquan = Product::where('id_type', $sanpham->id_type)
+                             ->where('id', '!=', $sanpham->id)
+                             ->paginate(3);
+        // $comments = comments::where('id_product', $request->id)->get();
+        
+        $product = Product::findOrFail($request->id);
+    
+        // Đếm số lượng đánh giá
+        $ratingCount = $product->ratings()->count();
+    
+        // Tính điểm đánh giá trung bình
+        $averageRating = $product->ratings()->avg('stars_rated');
+        
+        return view('page.chitiet_sanpham', compact('sanpham', 'splienquan', 'product', 'ratingCount', 'averageRating'));
     }
+
+    // public function getDetail(Request $request)
+    // {
+    //     $sanpham = product::where('id', $request->id)->first();
+    //     $splienquan = product::where('id', '<>', $sanpham->id, 'and', 'id_type', '=', $sanpham->id_type)->paginate(3);
+    //     $comments =    comment::where('id_product', $request->id)->get();
+    //     return view('page.chitiet_sanpham', compact('sanpham', 'splienquan', 'comments'));
+    // }
 
     public function getLoaiSp(Request $type)
     {

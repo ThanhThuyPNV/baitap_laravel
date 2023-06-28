@@ -12,6 +12,9 @@
 	<link rel="stylesheet" title="style" href="{{URL::to('source/assets/dest/css/style.css')}}">
 	<link rel="stylesheet" href="{{URL::to('source/assets/dest/css/animate.css')}}">
 	<link rel="stylesheet" title="style" href="{{URL::to('source/assets/dest/css/huong-style.css')}}">
+	<link rel="stylesheet" href="{{URL::to('source/assets/dest/css/rate.css')}}"/>
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css"> -->
 </head>
 <body>
 

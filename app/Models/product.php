@@ -14,6 +14,11 @@ class product extends Model
         return $this ->belongsTo("App\Type_product");
         //Belongsto: ngược lại bảng type_product thuộc về products
     }
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+    
     public function bill_details(){
         return $this ->belongsTo("App\bill_detail");
     }
