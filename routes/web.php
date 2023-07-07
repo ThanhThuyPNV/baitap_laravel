@@ -67,3 +67,5 @@ Route::post('check-out', [App\Http\Controllers\PageController::class, 'postCheck
 
 
 
+Route::get('/form', [App\Http\Controllers\SingupController::class, 'index']);
+Route::post('/form', [App\Http\Controllers\SingupController::class, 'displayInFor']);
